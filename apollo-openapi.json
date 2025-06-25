@@ -1,0 +1,40 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Apollo API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/contacts/search": {
+      "post": {
+        "summary": "Search for Apollo contacts",
+        "operationId": "searchContacts",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "api_key": { "type": "string" },
+                  "q_organization_domains": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  },
+                  "page": { "type": "integer", "default": 1 },
+                  "per_page": { "type": "integer", "default": 10 }
+                },
+                "required": ["api_key", "q_organization_domains"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    }
+  }
+}
